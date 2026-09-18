@@ -7,6 +7,7 @@
 html,body{
     width: 100%;
     height: 100%;
+    scroll-behavior: smooth;
 }
 body{
     background-color: black;
@@ -16,27 +17,59 @@ main{
     height: 100%;
     background-color: black;
     padding: 22px;
-    overflow-y: scroll;
 
-}
-section::-webkit-scrollbar{
-    display: none;
 }
 section{
     width: 25%;
     height: 100%;
-    background-color: brown;
     border-radius: 12px;
     margin: auto;
     box-shadow: 0px 0px 30px rgba(255, 255, 255, 0.511);
-    scroll-snap-type:y mandatory;
+ 
   
 }
 .all-reels{ 
     width: 100%;
     height: 100%;
-      scroll-snap-align: start;
-    scroll-snap-stop: always;
+    overflow-y: scroll;
+   scroll-snap-type:y mandatory;
+}
+.icons{
+    color: white;
+    position: absolute;
+    top: 40%;
+    left:64%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+.icons i{
+    color: white;
+    font-size: 1.7rem;
+    background-color: rgba(255, 255, 255, 0.361);
+    padding: 7px 7px;
+    border-radius: 50%;
+    backdrop-filter: blur(10px);
+}
+.like{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.comment{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.share{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.all-reels::-webkit-scrollbar{
+    display: none;
 }
 .reel{
     width: 100%;
@@ -46,6 +79,8 @@ section{
     overflow: hidden;
     position: relative;
     margin-bottom: 25px;
+      scroll-snap-align: start;
+    scroll-snap-stop: always;
 }
 /* .reel video{
     object-fit: cover;
