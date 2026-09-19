@@ -72,7 +72,7 @@ let allReels = document.querySelector('.all-reels');
 users.forEach(function(elem){
     clutter += `                    
                 <div class="reel">
-                    <video muted autoplay loop src="${elem.video}"></video>
+                    <video autoplay muted loop src="${elem.video}"></video>
                     <div class="bottom">
                         <div class="info">
                             <img class="profile-pic" src="${elem.profilepic}" alt="">
