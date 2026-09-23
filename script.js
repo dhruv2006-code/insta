@@ -66,24 +66,23 @@ let users = [
     video: "./video6.mp4"
   }
 ];
-let allReels = document.querySelector('.all-reels');
-    let clutter = '';
-
-users.forEach(function(elem){
-    clutter += `                    
-                <div class="reel">
+var allReels = document.querySelector('.all-reels');
+  let clutter = '';
+function addData(){
+  users.forEach(function(elem,index){
+    clutter += `<div class="reel">
                     <video autoplay muted loop src="${elem.video}"></video>
                     <div class="bottom">
                         <div class="info">
                             <img class="profile-pic" src="${elem.profilepic}" alt="">
-                            <h4>${elem.username}</h4>
                             <button class="follow">${`${elem.isfollowed? "Followed":"Follow"}`}</button>
+                            <h4>${elem.username}</h4>
                     </div>
                         <h5>${elem.description}</h5>
                     </div>
                      <div class="icons">
-                        <div class="like">
-                        ${elem.isliked? `<i id= "liked" class="ri-heart-3-fill"></i>`:`<i class="ri-heart-3-line"></i>`}
+                        <div id="${index}" class="like">
+                        ${elem.isliked? `<i id= "liked" class="ri-heart-3-fill"></i>`:`<i class="unlike ri-heart-3-line"></i>`}
                         
                         <h4>${elem.likecount}</h4>    
                         </div>
@@ -98,8 +97,12 @@ users.forEach(function(elem){
                         </div>
                         <i class="ri-more-2-fill"></i>
                     </div>
-                </div>
-               `
-                
-                allReels.innerHTML = clutter;
+                </div>`              
+})
+ allReels.innerHTML = clutter;
+}
+addData();
+allReels.addEventListener('click',function(dets){
+  console.log(dets.target.id);
+  
 })
