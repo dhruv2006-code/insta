@@ -103,6 +103,8 @@ function addData(){
 }
 addData();
 allReels.addEventListener('click',function(dets){
-  console.log(dets.target.id);
+ users[dets.target.id].likecount++;
+ 
+console.log(users[dets.target.id]);
   
 })

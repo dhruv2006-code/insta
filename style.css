@@ -117,6 +117,7 @@ section{
     color: white;
     border: 1px solid white;
     border-radius: 4px;
+    order: 1;
 }
 .bottom .info .profile-pic{
     height: 40px;
