@@ -67,15 +67,16 @@ let users = [
   }
 ];
 var allReels = document.querySelector('.all-reels');
-  let clutter = '';
 function addData(){
+  let clutter = '';
+
   users.forEach(function(elem,index){
     clutter += `<div class="reel">
                     <video autoplay muted loop src="${elem.video}"></video>
                     <div class="bottom">
                         <div class="info">
                             <img class="profile-pic" src="${elem.profilepic}" alt="">
-                            <button class="follow">${`${elem.isfollowed? "Followed":"Follow"}`}</button>
+                            <button id="${index}" class="follow">${`${elem.isfollowed? "Followed":"Follow"}`}</button>
                             <h4>${elem.username}</h4>
                     </div>
                         <h5>${elem.description}</h5>
@@ -83,7 +84,6 @@ function addData(){
                      <div class="icons">
                         <div id="${index}" class="like">
                         ${elem.isliked? `<i id= "liked" class="ri-heart-3-fill"></i>`:`<i class="unlike ri-heart-3-line"></i>`}
-                        
                         <h4>${elem.likecount}</h4>    
                         </div>
                         <div class="comment">
@@ -99,12 +99,23 @@ function addData(){
                     </div>
                 </div>`              
 })
+
+
  allReels.innerHTML = clutter;
 }
 addData();
+
 allReels.addEventListener('click',function(dets){
- users[dets.target.id].likecount++;
- 
-console.log(users[dets.target.id]);
-  
+
+  if(!users[dets.target.id].isliked == true){
+     users[dets.target.id].likecount++;
+  users[dets.target.id].isliked = true;
+  }else{
+        users[dets.target.id].likecount--;
+  users[dets.target.id].isliked = false;
+  }
+  addData();
+
+
+
 })
