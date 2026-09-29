@@ -8,7 +8,8 @@ let users = [
     description: "Caught the sunset over the ridge after a 5-hour hike! 🏔️✨ #hiking #outdoors",
     sharecount: 87,
     isfollowed: false,
-    video: "./video1.mp4"
+    video: "./video1.mp4",
+    isMuted: false,
   },
   {
     username: "chef_marina",
@@ -19,7 +20,8 @@ let users = [
     description: "Homemade sourdough fresh out of the oven. Recipe in bio! 🥖🍞",
     sharecount: 45,
     isfollowed: true,
-    video: "./video2.mp4"
+    video: "./video2.mp4",
+    isMuted: false,
   },
   {
     username: "tech_insights",
@@ -30,7 +32,8 @@ let users = [
     description: "Top 5 VS Code extensions you should be using in 2026. Thread below 👇",
     sharecount: 1205,
     isfollowed: true,
-    video: "./video3.mp4"
+    video: "./video3.mp4",
+    isMuted: false,
   },
   {
     username: "urban_lens",
@@ -41,7 +44,8 @@ let users = [
     description: "Rainy neon lights in Tokyo tonight ☔️🏮 #streetphotography",
     sharecount: 12,
     isfollowed: false,
-    video: "./video4.mp4"
+    video: "./video4.mp4",
+    isMuted: false,
   },
   {
     username: "fitness_realm",
@@ -52,7 +56,8 @@ let users = [
     description: "Consistency > Perfection. Day 45 of full body conditioning! 💪🏋️‍♀️",
     sharecount: 340,
     isfollowed: false,
-    video: "./video5.mp4"
+    video: "./video5.mp4",
+    isMuted: false,
   },
   {
     username: "cosmic_art",
@@ -63,7 +68,8 @@ let users = [
     description: "Finished my latest 3D digital illustration! What do you guys think? 🎨✨",
     sharecount: 98,
     isfollowed: true,
-    video: "./video6.mp4"
+    video: "./video6.mp4",
+    isMuted: false,
   }
 ];
 var allReels = document.querySelector('.all-reels');
@@ -71,7 +77,8 @@ function addData(){
   let clutter = '';
   users.forEach(function(elem,index){
     clutter += `<div class="reel">
-                    <video autoplay loop src="${elem.video}"></video>
+                <i id=${index} class="mute ri-volume-mute-line"></i>
+                    <video autoplay ${elem.isMuted? 'muted':''} loop src="${elem.video}"></video>
                     <div class="bottom">
                         <div class="info">
                             <img class="profile-pic" src="${elem.profilepic}" alt="">
@@ -114,6 +121,8 @@ if(dets.target.className == "like"){
       users[dets.target.id].likecount--;
     users[dets.target.id].isliked = false;
   }
+addData()
+
 }
 if(dets.target.className == "follow"){
   if(!users[dets.target.id].isfollowed){
@@ -122,7 +131,16 @@ if(dets.target.className == "follow"){
   else{
     users[dets.target.id].isfollowed = false;
   }
-}
 addData()
+}
+if(dets.target.className == 'mute'){
+  if(!users[dets.target.id].isMuted){
+    users[dets.target.id].isMuted = true;
+  }
+  else{
+        users[dets.target.id].isMuted = false;
+  }
+addData()
+}
 
 })
