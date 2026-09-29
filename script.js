@@ -9,7 +9,7 @@ let users = [
     sharecount: 87,
     isfollowed: false,
     video: "./video1.mp4",
-    isMuted: false,
+    isMuted: true,
   },
   {
     username: "chef_marina",
@@ -21,7 +21,7 @@ let users = [
     sharecount: 45,
     isfollowed: true,
     video: "./video2.mp4",
-    isMuted: false,
+    isMuted: true,
   },
   {
     username: "tech_insights",
@@ -33,7 +33,7 @@ let users = [
     sharecount: 1205,
     isfollowed: true,
     video: "./video3.mp4",
-    isMuted: false,
+    isMuted: true,
   },
   {
     username: "urban_lens",
@@ -45,7 +45,7 @@ let users = [
     sharecount: 12,
     isfollowed: false,
     video: "./video4.mp4",
-    isMuted: false,
+    isMuted: true,
   },
   {
     username: "fitness_realm",
@@ -57,7 +57,7 @@ let users = [
     sharecount: 340,
     isfollowed: false,
     video: "./video5.mp4",
-    isMuted: false,
+    isMuted: true,
   },
   {
     username: "cosmic_art",
@@ -69,7 +69,7 @@ let users = [
     sharecount: 98,
     isfollowed: true,
     video: "./video6.mp4",
-    isMuted: false,
+    isMuted: true,
   }
 ];
 var allReels = document.querySelector('.all-reels');
@@ -77,8 +77,10 @@ function addData(){
   let clutter = '';
   users.forEach(function(elem,index){
     clutter += `<div class="reel">
-                <i id=${index} class="mute ri-volume-mute-line"></i>
-                    <video autoplay ${elem.isMuted? 'muted':''} loop src="${elem.video}"></video>
+                    <video autoplay ${elem.isMuted ?'muted':''} loop src="${elem.video}"></video>
+                        <div class="mute" id=${index}>
+              <i class="ri-volume-mute-line"></i>
+        </div>
                     <div class="bottom">
                         <div class="info">
                             <img class="profile-pic" src="${elem.profilepic}" alt="">
@@ -138,7 +140,7 @@ if(dets.target.className == 'mute'){
     users[dets.target.id].isMuted = true;
   }
   else{
-        users[dets.target.id].isMuted = false;
+        users[dets.target.id].isMuted =false;
   }
 addData()
 }

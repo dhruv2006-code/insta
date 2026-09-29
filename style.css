@@ -100,7 +100,7 @@ section{
     width: 100%;
     height: 100%;
 }
-.reel .mute{
+.mute{
     position: absolute;
     color: white;
     right: 10px;
@@ -109,9 +109,11 @@ section{
     background-color: red;
     border-radius: 50%;
 }
-.reel .mute i{
+.mute i{
     pointer-events: none;
-    font-size: 30px;
+}
+.mute:active{
+    scale: 0.95;
 }
 .reel .bottom{
     position: absolute;
