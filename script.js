@@ -69,10 +69,9 @@ let users = [
 var allReels = document.querySelector('.all-reels');
 function addData(){
   let clutter = '';
-
   users.forEach(function(elem,index){
     clutter += `<div class="reel">
-                    <video autoplay muted loop src="${elem.video}"></video>
+                    <video autoplay loop src="${elem.video}"></video>
                     <div class="bottom">
                         <div class="info">
                             <img class="profile-pic" src="${elem.profilepic}" alt="">
@@ -106,16 +105,24 @@ function addData(){
 addData();
 
 allReels.addEventListener('click',function(dets){
-
-  if(!users[dets.target.id].isliked == true){
-     users[dets.target.id].likecount++;
-  users[dets.target.id].isliked = true;
-  }else{
-        users[dets.target.id].likecount--;
-  users[dets.target.id].isliked = false;
+if(dets.target.className == "like"){
+  if(!users[dets.target.id].isliked){
+    users[dets.target.id].likecount++;
+    users[dets.target.id].isliked = true;
   }
-  addData();
-
-
+  else{
+      users[dets.target.id].likecount--;
+    users[dets.target.id].isliked = false;
+  }
+}
+if(dets.target.className == "follow"){
+  if(!users[dets.target.id].isfollowed){
+    users[dets.target.id].isfollowed = true;
+  }
+  else{
+    users[dets.target.id].isfollowed = false;
+  }
+}
+addData()
 
 })
